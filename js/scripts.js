@@ -69,64 +69,81 @@ Pizza.prototype.setSize = function (sizeSelection) {
 // -------------------------------------------------------------------------
 
 function BuildPizzaPage(pizza){
+  debugger;
   this.veggieOptions = pizza.veggieOptions,
   this.meatOptions = pizza.meatOptions,
   this.sauceOptions = pizza.sauceOptions
   this.crustOptions = pizza.crustOptions,
   this.sizeOptions = pizza.sizeOptions
-}
+};
 
 BuildPizzaPage.prototype.displayVeggies = function (veggieSelector) {
-  var veggiesToDisplay = "";
+  var veggiesToDisplay = "<h4>Veggie Options</h4>";
   this.veggieOptions.forEach(function(topping){
-    veggiesToDisplay += "<div class='checkbox'><label><input type='checkbox' name='veggieOptions' value='" + topping + "'>" + topping + "</label></div>"
+    veggiesToDisplay += "<div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' name='veggieOptions' value='" + topping + "'>" + topping + "</label></div>"
   });
   veggieSelector.html(veggiesToDisplay);
-}
+};
 
 BuildPizzaPage.prototype.displayMeats = function (meatSelector) {
-  var meatsToDisplay = "";
+  var meatsToDisplay = "<h4>Meat Options</h4>";
   this.meatOptions.forEach(function(topping){
-    meatsToDisplay += "<div class='checkbox'><label><input type='checkbox' name='meatOptions' value='" + topping + "'>" + topping + "</label></div>"
+    meatsToDisplay += "<div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' name='meatOptions' value='" + topping + "'>" + topping + "</label></div>"
   });
   meatSelector.html(meatsToDisplay);
-}
+};
 
 BuildPizzaPage.prototype.displaySauces = function (sauceSelector) {
-  var saucesToDisplay = "";
+  var saucesToDisplay = "<h4>Sauce</h4><select id='sauceChoice' class='form-control'>";
   this.sauceOptions.forEach(function(topping){
     saucesToDisplay += "<option value='" + topping + "'>" + topping + "</option>"
   });
-  sauceSelector.html(saucesToDisplay);
-}
+  sauceSelector.html(saucesToDisplay + "</select>");
+};
 
 BuildPizzaPage.prototype.displaySizes = function (sizeSelector) {
-  var sizesToDisplay = "";
+  var sizesToDisplay = "<h4>Size</h4><select id='sizeChoice' class='form-control'>";
   this.sizeOptions.forEach(function(topping){
     sizesToDisplay += "<option value='" + topping + "'>" + topping + "</option>"
   });
-  sizeSelector.html(sizesToDisplay);
-}
+  sizeSelector.html(sizesToDisplay + "</select class='form-control'>");
+};
 
 BuildPizzaPage.prototype.displayCrusts = function (crustSelector) {
-  var crustsToDisplay = "";
+  var crustsToDisplay = "<h4>Crust</h4><select id='crustChoice' class='form-control'>";
   this.crustOptions.forEach(function(topping){
     crustsToDisplay += "<option value='" + topping + "'>" + topping + "</option>"
   });
-  crustSelector.html(crustsToDisplay);
-}
+  crustSelector.html(crustsToDisplay + "</select>");
+};
 
+BuildPizzaPage.prototype.displayAll = function (veggieSelector, meatSelector, sauceSelector, sizeSelector, crustSelector) {
+  this.displayVeggies(veggieSelector);
+  this.displayMeats(meatSelector);
+  this.displaySauces(sauceSelector);
+  this.displaySizes(sizeSelector);
+  this.displayCrusts(crustSelector);
+};
 
 $(function() {
 
   $("#buildPie").click(function(){
     var order = new Order();
-    var buildPizzaPage = BuildPizzaPage(new Pizza());
+    var buildPizzaPage = new BuildPizzaPage(new Pizza());
+    var veggieSelector = $("#veggieOptions");
+    var meatSelector = $("#meatOptions");
+    var sauceSelector = $("#sauceOptions");
+    var sizeSelector = $("#sizeOptions");
+    var crustSelector = $("#crustOptions");
+
+    buildPizzaPage.displayAll(veggieSelector, meatSelector, sauceSelector, sizeSelector, crustSelector);
 
     $("#intro").hide();
     $(".build").show();
+  });
 
+  $("#addPieToOrder").click(){
 
-  })
+  }
 
 });
