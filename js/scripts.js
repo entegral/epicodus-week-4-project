@@ -113,16 +113,22 @@ BuildPizzaPage.prototype.displayCrusts = function (crustSelector) {
 };
 
 BuildPizzaPage.prototype.displayAll = function (veggieSelector, meatSelector, sauceSelector, sizeSelector, crustSelector) {
-  this.displayVeggies(veggieSelector);
-  this.displayMeats(meatSelector);
-  this.displaySauces(sauceSelector);
   this.displaySizes(sizeSelector);
   this.displayCrusts(crustSelector);
+  this.displaySauces(sauceSelector);
+  this.displayVeggies(veggieSelector);
+  this.displayMeats(meatSelector);
 };
 
 BuildPizzaPage.prototype.updateOrderOutput = function (orderDetailSelector) {
-  debugger;
-  orderDetailSelector.html("<li>Subtotal: " + order.subtotal + "</li><li>Total: " + order.total + "</li>");
+  var output = "";
+  var count = 1;
+  order.list.forEach(function(each){
+    output += "<li>Pizza #" + count + " = $" + each.price + "</li>"
+    count += 1;
+  })
+  output += "<li><strong>Subtotal: $" + order.subtotal + "</li><li>Total: $" + order.total + "<strong></li>"
+  orderDetailSelector.html(output);
 };
 
 
@@ -141,6 +147,7 @@ $(function() {
     buildPizzaPage.displayAll(veggieSelector, meatSelector, sauceSelector, sizeSelector, crustSelector);
 
     $("#intro").hide();
+    $(".checkout").hide();
     $(".build").show();
   });
 
@@ -159,6 +166,8 @@ $(function() {
     });
     order.addPizza(veggieChoices, meatChoices, sauceChoice, crustChoice, sizeChoice);
     $(".build").show();
+    $(".orderDetails").show();
+
 
     var buildPizzaPage = new BuildPizzaPage(new Pizza());
     var veggieSelector = $("#veggieOptions");
@@ -170,9 +179,16 @@ $(function() {
     buildPizzaPage.displayAll(veggieSelector, meatSelector, sauceSelector, sizeSelector, crustSelector);
 
     var orderDetails = $("#orderDetails");
-    debugger;
     buildPizzaPage.updateOrderOutput(orderDetails);
 
   });
+
+  $("#checkout").click(function(){
+    $(".build").hide();
+    $(".checkout").show();
+
+
+
+  })
 
 });

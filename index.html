@@ -28,36 +28,55 @@
       <p>When you are happy with your choices, you can add another pizza to your order or checkout.</p>
     </div>
 
+    <div class="jumbotron checkout">
+      <h1 class="display-4">Order Information</h1>
+      <p class="lead">Name and Delivery Option</p>
+      <hr class="my-4">
+      <p>Thank you for your order. Let us know if you would like delivery or pickup. We will process your payment through an external payment processer after you provide us your contact information.</p>
+    </div>
+
     <div class="row">
-      <div class="col-md-8 build">
-        <form id="buildPizzaForm">
-          <div class="form-group" id="veggieOptions">
-
-          </div>
-          <div class="form-group" id="meatOptions">
-
-          </div>
-          <div class="form-group" id="sauceOptions">
-
-
-          </div>
-          <div class="form-group" id="sizeOptions">
-
-          </div>
-          <div class="form-group" id="crustOptions">
-
-          </div>
-          <button class="btn btn-info" type="submit" name="button">Add Pie to Order</button>
-        </form>
+      <div class="col-md-8">
+        <div class="build">
+          <form id="buildPizzaForm">
+            <div class="form-group" id="sizeOptions">
+            </div>
+            <div class="form-group" id="crustOptions">
+            </div>
+            <div class="form-group" id="sauceOptions">
+            </div>
+            <button id="addPizzaBtn" class="btn btn-info" type="submit" name="button">Add Pie to Order</button>
+            <div class="form-group" id="veggieOptions">
+            </div>
+            <div class="form-group" id="meatOptions">
+            </div>
+          </form>
+        </div>
+        <div class="checkout">
+          <form id="checkoutForm">
+            <div class="form-group" <input id="name" type="text" class="form-control" aria-label="Default" placeholder="Name">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+              </div>
+                <input type="text" class="form-control" placeholder="Check box and provide address if delivery is desired">
+            </div>
+          </form>
+        </div>
       </div>
 
-      <div id="cart" class="col-md-4 well build">
-        <div class="card build" style="width: 18rem;">
+      <div id="cart" class="col-md-4">
+        <div class="card orderDetails" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Your Order Details:</h5 <ul class="card-text" id="orderDetails">
+            <h5 class="card-title">Your Order Details:</h5>
+            <ul class="card-text" id="orderDetails">
 
             </ul>
-            <button id="checkout" class="btn btn-primary btn-sm" type="button">I'm Ready to Checkout</button>
+            <button id="checkout" class="btn btn-primary btn-sm build" type="button">I'm Ready to Checkout</button>
+            <button id="pay" class="btn btn-primary btn-sm checkout" type="button">Pay</button>
           </div>
         </div>
       </div>
