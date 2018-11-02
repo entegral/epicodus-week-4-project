@@ -26,37 +26,37 @@ _GitHub, HTML, CSS, Bootstrap, Javascript, JQuery_
 
 ## Learning Objectives
 
-- [ ] **Create a website for a pizza company where a user can choose one or more individual toppings (cheese, pepperoni, artichoke, anchovy, etc) and a size to order a pizza and see the final cost.**
+- [x] **Create a website for a pizza company where a user can choose one or more individual toppings (cheese, pepperoni, artichoke, anchovy, etc) and a size to order a pizza and see the final cost.**
 
-- [ ] **Create a pizza object constructor with properties for toppings and size.**
+- [x] **Create a pizza object constructor with properties for toppings and size.**
 
-- [ ] **Create a prototype method for the cost of a pizza depending on the selections chosen. Use your own formula for this.**
+- [x] **Create a prototype method for the cost of a pizza depending on the selections chosen. Use your own formula for this.**
 
-- [ ] Code meets standards from previous weeks.
+- [x] Code meets standards from previous weeks.
 
-- [ ] Constructors and prototypes are used successfully.
+- [x] Constructors and prototypes are used successfully.
 
-- [ ] Application works as expected.
+- [x] Application works as expected.
 
-- [ ] Plain English specs are included in your README.
+- [x] Plain English specs are included in your README.
 
-- [ ] Required functionality is in place by the 5:00pm Friday deadline.
+- [x] Required functionality is in place by the 5:00pm Friday deadline.
 
-- [ ] Project is in a polished, portfolio-quality state.
+- [x] Project is in a polished, portfolio-quality state.
 
-- [ ] Project demonstrates an understanding of this week's concepts. If prompted, you can discuss your code with an instructor using correct terminology.
+- [x] Project demonstrates an understanding of this week's concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 
 
 
 ## Bonus Objectives
 
-- [ ] Style your site with CSS and images.
+- [x] Style your site with CSS and images.
 
-- [ ] Allow users to order more than one pizza with different toppings.
+- [x] Allow users to order more than one pizza with different toppings.
 
 - [ ] Display the list of pizzas ordered as links that can be clicked for details.
 
-- [ ] Offer a delivery option that then requires address information.
+- [x] Offer a delivery option that then requires address information.
 
 
 ## Specifications
@@ -77,25 +77,20 @@ _GitHub, HTML, CSS, Bootstrap, Javascript, JQuery_
 ```
 * Input: Pizza.setSize("large")
 * Output: Pizza.price = 10
-
-
-- [ ] Program allows user to establish an order by establishing order information
-```
-* Input: new Order(Name, delivery)
-* Output: Order.name = Name, Order.delivery = false
 ```
 
-- [ ] Program receives address information if delivery option === true
+- [x] Program dynamically adds pizzas to an array within the order object.
 ```
-* Input: "1234 Drewery Lane"
-* Output: Order.address = "1234 Drewery Lane"
+* Input: order.addPizza("stuff")
+* Output: order.list = ["pizza with stuff"]
 ```
 
-- [ ] Program adds custom-made pizza to an order-array
+- [x] Program allows user to enter name and address before payment
 ```
-* Input: Order.addPizza(customPizza)
-* Output: Order.list = [customPizza]
+* Input: new Order(Name, deliveryOption, address)
+* Output: Order.name = Name, Order.delivery = true, Order.address = "address"
 ```
+
 
 
 ### License
