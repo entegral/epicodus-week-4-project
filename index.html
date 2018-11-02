@@ -35,6 +35,12 @@
       <p>Thank you for your order. Let us know if you would like delivery or pickup. <br>We will process your payment through an external payment processer after you provide us your contact information.</p>
     </div>
 
+    <div class="jumbotron summary">
+      <h1 class="display-4">Order Information</h1>
+      <hr class="my-4">
+      <p>Thank you for your order.</p>
+    </div>
+
     <div class="row">
       <div class="col-md-8">
         <div class="build">
@@ -63,12 +69,13 @@
                   <input type="checkbox" name="delivery" aria-label="Checkbox for following text input">
                 </div>
               </div>
-                <input type="text" id="address" class="form-control" placeholder="Check box and provide address if delivery is desired">
+              <input type="text" id="address" class="form-control" placeholder="Check box and provide address if delivery is desired">
             </div>
-            <button id="pay" class="btn btn-primary btn-sm checkout" type="submit">Pay</button>
+            <button class="btn btn-primary btn-sm checkout" type="submit">Continue to Order Summary and Payment</button>
           </form>
         </div>
       </div>
+
 
       <div id="cart" class="col-md-4">
         <div class="card orderDetails" style="width: 18rem;">
@@ -84,6 +91,26 @@
       </div>
 
     </div>
+
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+
+        <div class="summary">
+          <div class="card summary" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Your Order Summary:</h5>
+              <ul class="card-text" id="orderSummary">
+
+              </ul>
+              <button id="reloadPage" class="btn btn-primary btn-sm" type="button">Reload Page</button>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </body>
 

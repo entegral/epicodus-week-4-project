@@ -12,6 +12,10 @@ div div.build {
   display: none;
 }
 
+.summary {
+  display: none;
+}
+
 .orderDetails {
   display: none;
 }

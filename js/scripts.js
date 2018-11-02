@@ -203,8 +203,17 @@ $(function() {
     order.name = userName;
     console.log(order);
 
+    $(".checkout").hide();
+    $(".orderDetails").hide();
 
-    alert("Thank you for your payment, we have stolen your funds and left you with only this lonely and annoying alert to console you.")
+    var buildPizzaPage = new BuildPizzaPage(new Pizza());
+    buildPizzaPage.updateOrderOutput($("#orderSummary"));
+    $(".summary").show();
+
+  });
+
+  $("#reloadPage").click(function(){
+    window.location.reload(true);
   });
 
 });
