@@ -2,6 +2,12 @@
   display: none;
 }
 
+div div.build {
+  border: solid lightgray 1px;
+  border-radius: 8px;
+  padding: 25px;
+}
+
 .checkout {
   display: none;
 }
