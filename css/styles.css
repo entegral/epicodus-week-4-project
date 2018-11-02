@@ -6,6 +6,10 @@
   display: none;
 }
 
+.orderDetails {
+  display: none;
+}
+
 #orderDetails {
   list-style-type: none;
 }

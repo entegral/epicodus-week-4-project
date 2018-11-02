@@ -149,6 +149,7 @@ $(function() {
     $("#intro").hide();
     $(".checkout").hide();
     $(".build").show();
+    $(".orderDetails").show();
   });
 
   $("#buildPizzaForm").submit(function(event){
@@ -184,11 +185,26 @@ $(function() {
   });
 
   $("#checkout").click(function(){
+    var buildPizzaPage = new BuildPizzaPage(new Pizza());
     $(".build").hide();
     $(".checkout").show();
+    order.total = order.subtotal;
+    buildPizzaPage.updateOrderOutput($("#orderDetails"));
+
+  });
+
+  $("#checkoutForm").submit(function(event){
+    event.preventDefault();
+    var userName = $("#name").val();
+    if($("checkbox[name='delivery']:checked")){
+      order.delivery = true;
+      order.address = $("#address").val();
+    }
+    order.name = userName;
+    console.log(order);
 
 
-
-  })
+    alert("Thank you for your payment, we have stolen your funds and left you with only this lonely and annoying alert to console you.")
+  });
 
 });
