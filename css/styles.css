@@ -1,0 +1,11 @@
+.build {
+  display: none;
+}
+
+#checkout {
+  float: right;
+}
+
+#orderDetails {
+  list-style-type: none;
+}

@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-        Business Logic
+        // Business Logic
 // ---------------------------------------------------------------------------
 
 function Order(name, delivery) {
@@ -14,7 +14,6 @@ function Order(name, delivery) {
 Order.prototype.addPizza = function (pizza) {
   this.list.push(pizza);
   this.subtotal += pizza.price;
-  });
 };
 
 Order.prototype.calculateTotal = function () {
@@ -60,12 +59,17 @@ Pizza.prototype.setSize = function (sizeSelection) {
 
 
 // ---------------------------------------------------------------------------
-        User Interface Logic
+        // User Interface Logic
 // ---------------------------------------------------------------------------
 
 
 $(function() {
 
+  $("#buildPie").click(function(){
+    $("#intro").hide()
+    $(".build").show()
 
+
+  })
 
 });
