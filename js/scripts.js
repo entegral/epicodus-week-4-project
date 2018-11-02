@@ -11,13 +11,12 @@ function Order() {
   this.total = 0
 };
 
-Order.prototype.addPizza = function (veggieChoices, meatChoices, sauceChoice, crustChoice, sizeChoice) {
+Order.prototype.addPizza = function (veggieArray, meatArray, sauce, crust, size) {
   var pizza = new Pizza();
-  pizza.addToppings(veggieChoices, 1);
-  pizza.addToppings(meatChoices, 2);
-  pizza.addToppings(sauceChoice, 0.5);
-  pizza.addToppings(crustChoice, 1);
   this.list.push(pizza);
+  pizza.addToppings(veggieArray, 1);
+  pizza.addToppings(meatArray, 2);
+  pizza.setSauceCrustAndSize(sauce, crust, size);
   this.subtotal += pizza.price;
 };
 
@@ -41,23 +40,20 @@ function Pizza(){
   this.price = 0
 };
 
-Pizza.prototype.addToppings = function (toppingSelection, toppingValue) {
-  toppingSelection.forEach(function(topping){
-    this.userChoice.push(topping);
-    this.price += toppingValue;
-  });
+Pizza.prototype.setSauceCrustAndSize = function(sauce, crust, size) {
+  this.toppingChoices.push(sauce);
+  this.price += 1;
+  this.toppingChoices.push(crust);
+  this.price += 1;
+  this.size = size;
+  this.price += 10;
 };
 
-Pizza.prototype.setSize = function (sizeSelection) {
-  if (sizeSelection === "small"){
-    this.price += 6;
-  } else if (sizeSelection === "medium") {
-    this.price += 8;
-  } else if (sizeSelection === "large") {
-    this.price += 10;
-  } else if (sizeSelection === "family") {
-    this.price += 12;
-  }
+Pizza.prototype.addToppings = function (toppingSelection, toppingValue) {
+  toppingSelection.forEach(function(topping){
+    order.list[order.list.length - 1].toppingChoices.push(topping);
+    order.list[order.list.length - 1].price += toppingValue;
+  });
 };
 
 
@@ -69,7 +65,6 @@ Pizza.prototype.setSize = function (sizeSelection) {
 // -------------------------------------------------------------------------
 
 function BuildPizzaPage(pizza){
-  debugger;
   this.veggieOptions = pizza.veggieOptions,
   this.meatOptions = pizza.meatOptions,
   this.sauceOptions = pizza.sauceOptions
@@ -125,10 +120,17 @@ BuildPizzaPage.prototype.displayAll = function (veggieSelector, meatSelector, sa
   this.displayCrusts(crustSelector);
 };
 
+BuildPizzaPage.prototype.updateOrderOutput = function (orderDetailSelector) {
+  debugger;
+  orderDetailSelector.html("<li>Subtotal: " + order.subtotal + "</li><li>Total: " + order.total + "</li>");
+};
+
+
+var order = new Order();
+
 $(function() {
 
   $("#buildPie").click(function(){
-    var order = new Order();
     var buildPizzaPage = new BuildPizzaPage(new Pizza());
     var veggieSelector = $("#veggieOptions");
     var meatSelector = $("#meatOptions");
@@ -142,8 +144,35 @@ $(function() {
     $(".build").show();
   });
 
-  $("#addPieToOrder").click(){
+  $("#buildPizzaForm").submit(function(event){
+    event.preventDefault();
+    var sizeChoice = $("#sizeChoice").val();
+    var sauceChoice = $("#sauceChoice").val();
+    var crustChoice = $("#crustChoice").val();
+    var veggieChoices = []
+    $("input[name='veggieOptions']:checked").each(function(){
+      veggieChoices.push($(this).val());
+    });
+    var meatChoices = []
+    $("input[name='meatOptions']:checked").each(function(){
+      meatChoices.push($(this).val());
+    });
+    order.addPizza(veggieChoices, meatChoices, sauceChoice, crustChoice, sizeChoice);
+    $(".build").show();
 
-  }
+    var buildPizzaPage = new BuildPizzaPage(new Pizza());
+    var veggieSelector = $("#veggieOptions");
+    var meatSelector = $("#meatOptions");
+    var sauceSelector = $("#sauceOptions");
+    var sizeSelector = $("#sizeOptions");
+    var crustSelector = $("#crustOptions");
+
+    buildPizzaPage.displayAll(veggieSelector, meatSelector, sauceSelector, sizeSelector, crustSelector);
+
+    var orderDetails = $("#orderDetails");
+    debugger;
+    buildPizzaPage.updateOrderOutput(orderDetails);
+
+  });
 
 });
