@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.js"></script>
-    <script src="js/scripts.js"></script>
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
+
+<head>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="js/jquery.js"></script>
+  <script src="js/scripts.js"></script>
+  <title></title>
+</head>
+
+<body>
+  <div class="container">
 
 
-      <div class="jumbotron" id="intro">
-        <h1 class="display-4">Welcome to Pizza Planet!</h1>
-        <p class="lead">Here you can build yourself a custom pie and be on the road to happiness ASAP.</p>
-        <hr class="my-4">
-        <p>...unless you'd prefer delivery, we do that too.</p>
-        <button id="buildPie"class="btn btn-primary btn-lg" type="button">Build My Pie</button>
+    <div class="jumbotron" id="intro">
+      <h1 class="display-4">Welcome to Pizza Planet!</h1>
+      <p class="lead">Here you can build yourself a custom pie and be on the road to happiness ASAP.</p>
+      <hr class="my-4">
+      <p>...unless you'd prefer delivery, we do that too.</p>
+      <button id="buildPie" class="btn btn-primary btn-lg" type="button">Build My Pie</button>
+    </div>
+
+    <div class="jumbotron build">
+      <h1 class="display-4">Lets Build Your Pizza</h1>
+      <p class="lead">Select from the options below to add your pizza.</p>
+      <hr class="my-4">
+      <p>When you are happy with your choices, you can add another pizza to your order or checkout.</p>
+      <button id="addPieToOrder" class="btn btn-primary btn-lg" type="button">Add Pie to Order</button>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 build">
+
       </div>
 
-      <div class="jumbotron build">
-        <h1 class="display-4">Lets Build Your Pizza</h1>
-        <p class="lead">Select from the options below to add your pizza.</p>
-        <hr class="my-4">
-        <p>When you are happy with your choices, you can add another pizza to your order or checkout.</p>
-        <button id="addPieToOrder"class="btn btn-primary btn-lg" type="button">Add Pie to Order</button><button id="checkout"class="btn btn-primary btn-lg" type="button">I'm Ready to Checkout</button>
-      </div>
-
-      <div class="row">
-        <div class="col-md-8 build">
-
+      <div id="cart" class="col-md-4 well build">
+        <div class="card build" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Your Order Details:</h5
+            <ul class="card-text" id="orderDetails">
+              
+            </ul>
+            <button id="checkout" class="btn btn-primary btn-sm" type="button">I'm Ready to Checkout</button>
+          </div>
         </div>
-        <div id="cart" class="col-md-4 well build">
-          <h4>Your Order Details:</h4>
-          <ul id="orderDetails">
 
-          </ul>
-        </div>
+        <ul id="orderDetails">
+
+        </ul>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
