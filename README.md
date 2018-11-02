@@ -4,7 +4,8 @@
 
 ## Description
 
-_[DESCRIPTION]_
+_Pizza Planet is a web application that allows a user to order a custom pizza._
+_Pizza Planet accomplishes this through the use of class properties and prototype methods._
 
 ## Setup/Installation Requirements
 
@@ -60,11 +61,42 @@ _GitHub, HTML, CSS, Bootstrap, Javascript, JQuery_
 
 ## Specifications
 
-- [x] Program replaces numbers containing "0" with "Beep!"
+- [x] Program receives a string of a "topping", and it's price, then updates its topping list and price.
 ```
-* Input: 0
-* Output: ["Beep!"]
+* Input: Pizza.addSomething("topping", 1)
+* Output: Pizza.toppings = ["topping"], Pizza.price = 1
 ```
+
+- [x] Program receives a list of similar toppings, and their price/each, then updates its topping list and price total.
+```
+* Input: Pizza.addSomething(["topping1", "topping2"], 1)
+* Output: Pizza.toppings = ["topping1"], Pizza.price = 2
+```
+
+- [x] Program receives size information and adds relevant price.
+```
+* Input: Pizza.setSize("large")
+* Output: Pizza.price = 10
+
+
+- [ ] Program allows user to establish an order by establishing order information
+```
+* Input: new Order(Name, delivery)
+* Output: Order.name = Name, Order.delivery = false
+```
+
+- [ ] Program receives address information if delivery option === true
+```
+* Input: "1234 Drewery Lane"
+* Output: Order.address = "1234 Drewery Lane"
+```
+
+- [ ] Program adds custom-made pizza to an order-array
+```
+* Input: Order.addPizza(customPizza)
+* Output: Order.list = [customPizza]
+```
+
 
 ### License
 Copyright (c) 2018 **_RB_** MIT license.
